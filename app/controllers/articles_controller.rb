@@ -10,12 +10,13 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
   end
-end
+
   def create
     @article = Article.new(article_params)
     if @article.save
       redirect_to article_path(@article), notice: '保存できたよ'
     else
+      flash.now[:error] = '保存に失敗しました'
       render :new
     end
   end
