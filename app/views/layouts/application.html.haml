@@ -8,7 +8,7 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %link{:href => "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+    %link{:crossorigin => "anonymous", :href => "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
   %body
     %header.header
       .header_logos
@@ -16,13 +16,13 @@
           = link_to :back do
             = image_tag 'back.svg', class: 'header_back'
         %p.header_pageTitle BlogApp
-        - if user_signed_in?
-          .dropdown
-            = image_tag 'default-avatar.png', class: 'header_avatar dropbtn'
-            .dropdown-content
-              %a{:href => "#"} プロフィール
-              = link_to 'ログアウト', 'destroy_view_session_path', data: { method: 'delete'}
-        - else
+      - if user_signed_in?
+        .dropdown
+          = image_tag 'default-avatar.png', class: 'header_avatar dropbtn'
+          .dropdown-content
+            %a{:href => "#"} プロフィール
+            = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
+      - else
         = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
     - if flash.present?
       .flash
@@ -30,5 +30,3 @@
           %div{:class => key}= value
     = yield
 
-
--# とりあえず、質問のためにプルリクを送る
