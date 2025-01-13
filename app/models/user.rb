@@ -25,4 +25,7 @@ has_many :articles, dependent: :destroy
   def has_written?(article)
     articles.exists?(id: article.id)
   end
+  def display_name
+    self.email.split('@').first
+  end
 end
