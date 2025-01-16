@@ -29,4 +29,7 @@ has_one :profile, dependent: :destroy
   def display_name
     self.email.split('@').first
   end
+  def prepare_profile
+    profile || build_profile
+  end
 end
