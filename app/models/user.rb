@@ -32,6 +32,10 @@ has_one :profile, dependent: :destroy
     articles.exists?(id: article.id)
   end
 
+  def has_liked?(article)
+    likes.exists?(article_id: article.id)
+  end
+
   def display_name
 #     if profile && profile.nickname
 #     profile.nickname
