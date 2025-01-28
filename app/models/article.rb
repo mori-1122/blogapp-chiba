@@ -46,4 +46,3 @@ class Article < ApplicationRecord
   errors.add(:content, '100文字以上で入力') unless char_count > 100
   end
   end
-
