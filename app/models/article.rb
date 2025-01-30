@@ -2,12 +2,12 @@
 #
 # Table name: articles
 #
-#  id         :bigint           not null, primary key
+#  id         :integer          not null, primary key
 #  content    :text             not null
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :bigint           not null
+#  user_id    :integer          not null
 #
 # Indexes
 #
@@ -46,3 +46,4 @@ class Article < ApplicationRecord
   errors.add(:content, '100文字以上で入力') unless char_count > 100
   end
   end
+
