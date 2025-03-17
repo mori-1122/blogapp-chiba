@@ -48,7 +48,13 @@ has_one :profile, dependent: :destroy
   end
 
   def follow!(user)
-    following_relationships.create!(following_id: user.id)
+    if user.is_a?(User)
+      user_id = user.id
+    else
+      user_id = user
+    end
+
+    following_relationships.create!(following_id: user_id)
   end
 
   def unfollow!(user)
@@ -56,6 +62,10 @@ has_one :profile, dependent: :destroy
     relation.destroy!
   end
 
+  def has_followed?(user)
+    following_relationships.exists?(following_id: user.id)
+  end
+  
   # def birthday
   #   profile&.birthday
   # end
