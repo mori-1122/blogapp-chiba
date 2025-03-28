@@ -1,6 +1,21 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+# config/environments/production.rb
+config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:        ENV['MAILGUN_SMTP_SERVER'],
+    port:           ENV['MAILGUN_SMTP_PORT'],
+    domain:         'mori-create-app.herokuapp.com',
+    user_name:      ENV['MAILGUN_SMTP_LOGIN'],
+    password:       ENV['MAILGUN_SMTP_PASSWORD'],
+    authentication: 'plain',
+  }
 
+  config.action_mailer.default_url_options = {
+    host: 'mori-create-app.herokuapp.com', 
+    protocol: 'https'
+  }
+end
   # Code is not reloaded between requests.
   config.cache_classes = true
 
