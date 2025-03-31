@@ -12,7 +12,7 @@ Rails.application.configure do
   }
 
   config.action_mailer.default_url_options = {
-    host: 'mori-create-app.herokuapp.com', 
+    host: 'mori-create-app.herokuapp.com',
     protocol: 'https'
   }
   # Code is not reloaded between requests.
