@@ -29,6 +29,7 @@ gem 'binding_of_caller'
 gem 'devise'
 gem 'faker'
 gem 'hamlit'
+gem 'sidekiq'
 gem 'active_model_serializers'
 
 # Use Active Storage variant
