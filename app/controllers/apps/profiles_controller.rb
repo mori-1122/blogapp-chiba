@@ -1,15 +1,9 @@
-class ProfilesController < ApplicationController
-  before_action :authenticate_user!
+class Apps::ProfilesController < Apps::ApplicationController
     def show
       @profile = current_user.profile
     end
 
     def edit
-    #   if current_user.profile.present?
-    #     @profile = current_user.profile
-    #   else
-    #   @profile = current_user.build_profile
-    # end
     @profile = current_user.prepare_profile
     end
 
